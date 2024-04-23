@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVE Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
+    <script type="module"
+        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!-- how many contracts awarded per year
+    Loop - mystery bracket
+
+    base cost: -->
+    <sl-card class="card-header" id="calculator">
+        <div slot="header">
+            Calculator      
+            <sl-icon-button name="calculator" label="Settings"></sl-icon-button>         
+        </div>
+    <form action="#" class="validity-styles">
+
+        <sl-select class="label-on-left" id="model" name="model" label="Model" autocomplete="off" required
+            help-text="Choose your model to prepopulate some values">
+            <sl-option value="SVE">Social Value Engine</sl-option>
+            <sl-option value="Loop">Loop</sl-option>
+            <sl-option value="Global">4 Global</sl-option>
+            <sl-option value="Thrive">Thrive</sl-option>
+            <sl-option value="SocValEx">Social Value Exchange</sl-option>
+            <sl-option value="SocValPort">Social Value Portal</sl-option>
+            <sl-option value="InHouse">In House</sl-option>
+        </sl-select>
+        <sl-input class="label-on-left" type="number" id="contracts" name="contracts" help-text="Value of contracts"
+            label="Contracts">
+            <sl-icon name="currency-pound" slot="prefix"></sl-icon>
+        </sl-input>
+        <sl-input class="label-on-left" type="number" name="training" id="training" label="Training"
+            help-text="Cost of training"><sl-icon name="currency-pound" slot="prefix"></sl-icon></sl-input>
+        <sl-input class="label-on-left" type="number" name="setup" id="setup" label="Setup"
+            help-text="Cost of initial setup"><sl-icon name="currency-pound" slot="prefix"></sl-icon></sl-input>
+    </form>
+    <div slot="footer">
+        Total Cost: <sl-format-number id="totalCosts" type="currency" currency="GBP" value="0" lang="en-GB"></sl-format-number><br />
+        <!-- <sl-button variant="primary">Save</sl-button> -->
+      </div>
+</sl-card>
+
+    <!-- <sl-card class="card-header">
+        <div slot="header">
+            SVE         
+            <sl-icon-button name="trash" label="Settings"></sl-icon-button>   
+        </div>
+
+        This card has a header. You can put all sorts of things in it!
+    </sl-card>
+     -->
+
+</body>
+
+</html>

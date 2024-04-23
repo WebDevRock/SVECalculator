@@ -1,0 +1,65 @@
+:root {
+    --e-global-color-primary: #007569;
+    --e-global-color-secondary: #0aa79d;
+    --e-global-color-text: #3f3f3f;
+    --e-global-color-accent: #43c098;
+    --e-global-color-9587052: #7ad68b;
+    --e-global-color-606cb59: #b7e97b;
+    --e-global-color-abe40de: #eee;
+    --e-global-color-3be34b5: #f9f871;
+    --e-global-color-ebc2487: #0087ad;
+    --e-global-typography-primary-font-family: "Lato";
+    --e-global-typography-primary-font-size: 30px;
+    --e-global-typography-primary-font-weight: 600;
+    --e-global-typography-secondary-font-family: "Lato";
+    --e-global-typography-secondary-font-size: 18px;
+    --e-global-typography-secondary-font-weight: 700;
+    --e-global-typography-text-font-family: "Lato";
+    --e-global-typography-text-font-size: 16px;
+    --e-global-typography-text-font-weight: 500;
+    --e-global-typography-accent-font-family: "Lato";
+    --e-global-typography-accent-font-weight: 600;
+}
+
+.label-on-left {
+    --label-width: 3.75rem;
+    --gap-width: 1rem;
+}
+
+.label-on-left+.label-on-left {
+    margin-top: var(--sl-spacing-medium);
+}
+
+.label-on-left::part(form-control) {
+    display: grid;
+    grid: auto / var(--label-width) 1fr;
+    gap: var(--sl-spacing-3x-small) var(--gap-width);
+    align-items: center;
+}
+
+.label-on-left::part(form-control-label) {
+    text-align: right;
+}
+
+.label-on-left::part(form-control-help-text) {
+    grid-column-start: 2;
+}
+
+.card-header {
+    max-width: 100vw;
+    
+  }
+
+  .card-header [slot='header'], .card-header [slot='footer'] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-header h3 {
+    margin: 0;
+  }
+
+  .card-header sl-icon-button {
+    font-size: var(--sl-font-size-medium);
+  }
