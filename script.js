@@ -69,7 +69,7 @@ function init() {
         contracts.value = selectedModel.contractBase
         training.value = selectedModel.training
         setup.value = selectedModel.setup
-        totalCosts.value = contracts.value + training.value + setup.value
+        calc()
 
         for (const [key, value] of Object.entries(selectedModel)) {
             // console.log(`Key: ${key}, Value: ${value}`);
@@ -81,6 +81,26 @@ function init() {
         }
 
     });
+
+    contracts.addEventListener("sl-change", () => {
+        calc()
+    });
+    training.addEventListener("sl-change", () => {
+        calc()
+    });
+    setup.addEventListener("sl-change", () => {
+        calc()        
+    });
+    
+    function calc() {
+        console.log(model.value)
+        if(model.value === 'SocValPort') {
+            totalCosts.value = ((1.5 / 100) * parseInt(contracts.value)) + parseInt(contracts.value) + parseInt(training.value) + parseInt(setup.value)
+
+        } else 
+        totalCosts.value = parseInt(contracts.value) + parseInt(training.value) + parseInt(setup.value)
+    }
+
 
     function setField(id, value) {}
 }
