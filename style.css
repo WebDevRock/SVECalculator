@@ -22,7 +22,7 @@
 }
 
 .label-on-left {
-    --label-width: 3.75rem;
+    --label-width: 8.75rem;
     --gap-width: 1rem;
 }
 
@@ -46,11 +46,11 @@
 }
 
 .card-header {
-    max-width: 100vw;
+   
     
   }
 
-  .card-header [slot='header'], .card-header [slot='footer'] {
+  .card-header [slot='header'] {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -62,4 +62,7 @@
 
   .card-header sl-icon-button {
     font-size: var(--sl-font-size-medium);
+  }
+  .fullwidth {
+    min-width: 100%;
   }

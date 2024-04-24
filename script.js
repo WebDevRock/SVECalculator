@@ -1,43 +1,51 @@
 function init() {
     const config = {
         SVE: {
-            contractBase: 1875,
+            contractValue: 0,
+            fee: 1875,
             contractval: 0,
             training: 0,
             setup: 0,
         },
         Loop: {
-            contractBase: 14400,
+            contractValue: 0,
+            fee: 14400,
             contractval: 0,
             training: 995,
             setup: 495,
         },
         Global: {
-            contractBase: 15845,
+            contractValue: 0,
+            fee: 15845,
             contractval: 0,
             training: 0,
             setup: 0,
         },
         SocValEx: {
-            contractBase: 12000,
+            contractValue: 0,
+            fee: 12000,
             contractval: 0,
             training: 0,
             setup: 0,
         },
         SocValPort: {
-            contractBase: 18000,
+            contractValue: 0,
+            fee: 18000,
             contractval: 0,
             training: 0,
             setup: 0,
+            contractValue: 0,
         },
         InHouse: {
-            contractBase: 24000,
+            contractValue: 0,
+            fee: 24000,
             contractval: 0,
             training: 0,
             setup: 0,
         },
         Thrive: {
-            contractBase: 40000,
+            contractValue: 0,
+            fee: 40000,
             contractval: 0,
             training: 3000,
             setup: 0,
@@ -46,17 +54,11 @@ function init() {
 
     const model = document.getElementById("model");
     const contracts = document.getElementById("contracts");
-    const contractval = document.getElementById("contractval");
+    const contractValue = document.getElementById("contractValue");
     const training = document.getElementById("training");
     const setup = document.getElementById("setup");
-    const calculator = document.getElementById("calc");
     const totalCosts = document.getElementById("totalCosts");
-
-    // console.log(model.parentElement.parentElement.hidden=true);
-    // console.log(contracts);
-    // console.log(contractval);
-    // console.log(training);
-    // console.log(setup);
+    const totalSaving = document.getElementById("totalSaving");
 
     model.addEventListener("sl-change", () => {
         if (config.hasOwnProperty(model.value) === false) {
@@ -65,8 +67,13 @@ function init() {
         }
         const selectedModel = config[model.value];
 
+
         // console.table(selectedModel);
-        contracts.value = selectedModel.contractBase
+        model.setAttribute('help-text', "Based on an average cost: £" + selectedModel.fee)
+        
+        contractValue.disabled = model.value === 'SocValPort' ? false : true
+        
+        contracts.value = selectedModel.fee
         training.value = selectedModel.training
         setup.value = selectedModel.setup
         calc()
@@ -91,14 +98,21 @@ function init() {
     setup.addEventListener("sl-change", () => {
         calc()        
     });
+    contractValue.addEventListener("sl-change", () => {
+        calc()        
+    });
     
     function calc() {
-        console.log(model.value)
+        // console.log(model.value)
         if(model.value === 'SocValPort') {
-            totalCosts.value = ((1.5 / 100) * parseInt(contracts.value)) + parseInt(contracts.value) + parseInt(training.value) + parseInt(setup.value)
+            const defaults = config[model.value];
+            let fee = parseInt(contracts.value) === defaults.fee ? defaults.fee : parseInt(contracts.value)
+            totalCosts.value = ((0.15 / 100) * parseInt(contractValue.value)) +  parseInt(contracts.value) + parseInt(training.value) + parseInt(setup.value)
+            
 
         } else 
         totalCosts.value = parseInt(contracts.value) + parseInt(training.value) + parseInt(setup.value)
+        totalSaving.value = totalCosts.value - config['SVE'].fee
     }
 
 

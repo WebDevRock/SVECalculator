@@ -25,8 +25,8 @@
         </div>
         <form action="#" class="validity-styles">
 
-            <sl-select class="label-on-left" id="model" name="model" label="Model" autocomplete="off" required
-                help-text="Choose your model to prepopulate some values">
+            <sl-select class="label-on-left" id="model" name="model" label="Current Solution" autocomplete="off"
+                required help-text="&nbsp;">
                 <sl-option value="SVE">Social Value Engine</sl-option>
                 <sl-option value="Loop">Loop</sl-option>
                 <sl-option value="Global">4 Global</sl-option>
@@ -35,19 +35,47 @@
                 <sl-option value="SocValPort">Social Value Portal</sl-option>
                 <sl-option value="InHouse">In House</sl-option>
             </sl-select>
-            <sl-input class="label-on-left" type="number" id="contracts" name="contracts" help-text="Value of contracts"
-                label="Contracts" value="0">
+            <sl-input class="label-on-left" type="number" id="contracts" name="contracts"
+                help-text="Average base cost of your current solution" label="Current licence cost" value="0">
                 <sl-icon name="currency-pound" slot="prefix"></sl-icon>
             </sl-input>
+            <sl-input class="label-on-left" type="number" id="num_contracts" name="num_contracts"
+                label="Number of Contracts" value="0" help-text="How many contracts on average you award annually">
+            </sl-input>
+
+            <sl-input class="label-on-left" type="number" id="contractValue" name="contractValue"
+                help-text="The total value of the contracts you award annually" label="Contract value " value="0"
+                disabled>
+                <sl-icon name="currency-pound" slot="prefix"></sl-icon>
+            </sl-input>
+
             <sl-input class="label-on-left" type="number" name="training" id="training" label="Training" value="0"
                 help-text="Cost of training"><sl-icon name="currency-pound" slot="prefix"></sl-icon></sl-input>
             <sl-input class="label-on-left" type="number" name="setup" id="setup" label="Setup" value="0"
                 help-text="Cost of initial setup"><sl-icon name="currency-pound" slot="prefix"></sl-icon></sl-input>
         </form>
         <div slot="footer">
-            Total Cost: <sl-format-number id="totalCosts" type="currency" currency="GBP" value="0"
-                lang="en-GB"></sl-format-number><br />
-            <!-- <sl-button variant="primary">Save</sl-button> -->
+            <sl-split-panel disabled>
+                <div slot="start"
+                    style="height: 200px; background: var(--sl-color-neutral-50); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    Current Cost:&nbsp;<sl-format-number id="totalCosts" type="currency" currency="GBP"
+                    value="0" lang="en-GB"></sl-format-number>
+                </div>
+                <div slot="end"
+                    style="height: 200px; background: var(--sl-color-green-50); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    SVE saves you:&nbsp;<sl-format-number id="totalSaving" type="currency"
+                    currency="GBP" value="0" lang="en-GB"></sl-format-number>
+                </div>
+            </sl-split-panel>
+            <!-- <div class="fullwidth">
+                Total Cost of your current solution: <sl-format-number id="totalCosts" type="currency" currency="GBP"
+                    value="0" lang="en-GB"></sl-format-number><br />
+            </div>
+            <div class="fullwidth">
+                With the social value engine you would save: <sl-format-number id="totalSaving" type="currency"
+                    currency="GBP" value="0" lang="en-GB"></sl-format-number><br />
+            </div> -->
+
         </div>
     </sl-card>
 
